@@ -55,21 +55,9 @@ function preload()
 
 function setup() {
 
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  createCanvas = (displayWidth, displayHeight)
  
-  if(isMobile){
-    canW = displayWidth
-    canH = displayHeight
-
-    createCanvas(displayWidth+80 , displayHeight)
-  }
-
-  else{
-    canW = windowWidth
-    canH = windowHeight
-    createCanvas(windowWidth, windowHeight)
-  }
- 
+  
   frameRate(80);
 
   bk_song.play();
@@ -103,12 +91,12 @@ function setup() {
   rope3 = new Rope(4,{x:400,y:225});
 
   
-  ground = new Ground(200,canH,canW,20);
+  ground = new Ground(200,displayHeight,displayWidth,20);
 
   blink.frameDelay = 20;
   eat.frameDelay = 20;
 
-  bunny = createSprite(320,canH-80,100,100);
+  bunny = createSprite(320,displayHeight-80,100,100);
   bunny.scale = 0.2;
 
   bunny.addAnimation('blinking',blink);
